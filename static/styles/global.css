@@ -1,0 +1,291 @@
+/* Setting HTML Elements */
+
+html {
+  background-color: #f6f9fc;
+}
+
+/* Setting Navigation Properties */
+
+#nav,
+#nav-dropdown,
+.nav-link {
+  color: white;
+  background-color: #333;
+}
+
+#nav,
+#nav-gap {
+  height: 50px;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#nav-dropdown,
+.nav-link {
+  padding: 14px 16px;
+}
+
+#nav-dropdown:hover,
+.nav-link:hover {
+  background-color: #111;
+}
+
+#nav-dropdown {
+  display: none;
+}
+
+#nav-links {
+  display: block;
+}
+
+.nav-link {
+  float: left;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 575px) {
+  #nav-dropdown {
+    display: block;
+  }
+
+  #nav-links {
+    display: none;
+  }
+
+  .nav-link {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  #nav-dropdown {
+    display: none !important;
+  }
+
+  #nav-links {
+    display: block !important;
+  }
+}
+
+/* Setting Grid Properties */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* Setting Column Sizes */
+
+.col-12,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+  width: 100%;
+}
+
+.col-11,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11 {
+  width: 91%;
+}
+
+.col-10,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10 {
+  width: 83%;
+}
+
+.col-9,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9 {
+  width: 75%;
+}
+
+.col-8,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8 {
+  width: 66%;
+}
+
+.col-7,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7 {
+  width: 58%;
+}
+
+.col-6,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6 {
+  width: 50%;
+}
+
+.col-5,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5 {
+  width: 41%;
+}
+
+.col-4,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4 {
+  width: 33%;
+}
+
+.col-3,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3 {
+  width: 25%;
+}
+
+.col-2,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2 {
+  width: 16%;
+}
+
+.col-1,
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1 {
+  width: 8%;
+}
+
+/* Setting Large Column Sizes */
+
+@media screen and (max-width: 1200px) {
+  .col-lg-12,
+  .col-lg-11,
+  .col-lg-10,
+  .col-lg-9,
+  .col-lg-8,
+  .col-lg-7,
+  .col-lg-6,
+  .col-lg-5,
+  .col-lg-4,
+  .col-lg-3,
+  .col-lg-2,
+  .col-lg-1 {
+    width: 100%;
+  }
+}
+
+/* Setting Medium Column Sizes */
+
+@media screen and (max-width: 992px) {
+  .col-md-12,
+  .col-md-11,
+  .col-md-10,
+  .col-md-9,
+  .col-md-8,
+  .col-md-7,
+  .col-md-6,
+  .col-md-5,
+  .col-md-4,
+  .col-md-3,
+  .col-md-2,
+  .col-md-1 {
+    width: 100%;
+  }
+}
+
+/* Setting Small Column Sizes */
+
+@media screen and (max-width: 768px) {
+  .col-sm-12,
+  .col-sm-11,
+  .col-sm-10,
+  .col-sm-9,
+  .col-sm-8,
+  .col-sm-7,
+  .col-sm-6,
+  .col-sm-5,
+  .col-sm-4,
+  .col-sm-3,
+  .col-sm-2,
+  .col-sm-1 {
+    width: 100%;
+  }
+}
+
+/* Setting X-Small Column Sizes */
+
+@media screen and (max-width: 576px) {
+  .col-xs-12,
+  .col-xs-11,
+  .col-xs-10,
+  .col-xs-9,
+  .col-xs-8,
+  .col-xs-7,
+  .col-xs-6,
+  .col-xs-5,
+  .col-xs-4,
+  .col-xs-3,
+  .col-xs-2,
+  .col-xs-1 {
+    width: 100%;
+  }
+}
+
+/* Setting Global Classes */
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.button {
+  background-color: #1b6796;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #2e8fcc;
+  color: white;
+}
+
+.card {
+  padding: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}

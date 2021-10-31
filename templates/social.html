@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %} - Social{% endblock %}
+{% block banner %}Social{% endblock %}
+{% block content %}
+<div class="row">
+  {% for link in links %}
+  <div class="col-xs-6">
+    <div class="card">
+      <h4>{{ link.name }}</h4>
+      <hr />
+      <div class="row">
+        <div class="col-lg-6">
+          <p>{{ link.desc }}</p>
+        </div>
+        <div class="col-lg-6 center">
+          <a class="button" href="{{ link.url }}">Visit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
