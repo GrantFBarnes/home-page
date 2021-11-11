@@ -24,6 +24,11 @@
           <a class="button" href="{{ website.source }}">Source</a>
         </div>
       </div>
+      {% if website.screenshot %}
+      <div class="row">
+        <img class="center" src="{{ website.screenshot }}" alt="Screenshot" />
+      </div>
+      {% endif %}
     </div>
   </div>
   {% endfor %}
