@@ -2,12 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Grant Barnes{% block title %}{% endblock %}</title>
+    <title>Grant Barnes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="/static/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/static/styles/global.css" />
     <script src="/static/js/global.js"></script>
-    {% block head %}{% endblock %}
   </head>
   <body>
     <div id="nav">
@@ -19,12 +18,10 @@
       </div>
     </div>
     <div id="nav-gap"></div>
-    <div class="row">
-      <div class="col-12">
-        <h1 class="center">{% block banner %}{% endblock %}</h1>
+    <div id="content">
+      <div class="row center">
+        <p>404 - Page Not Found</p>
       </div>
     </div>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">{% block footer %}{% endblock %}</div>
   </body>
 </html>

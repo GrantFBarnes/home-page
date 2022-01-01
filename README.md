@@ -1,15 +1,32 @@
 # Grant F Barnes
 
-This is Python Flask site with no imported frameworks or css. Landing page for grantfbarnes.net site.
+This is Node.js server with no imported UI frameworks or css. Landing page for grantfbarnes.net site. It also serves as the backend for other personal Single Page Application (SPA) sites.
 
 ## Prerequisites
 
-Run `pip install flask` to get flask installed.
+### Environment Variables
 
-## Development server
+You will need to set the following environment variables
 
-Run `flask run` for a dev server. Navigate to `http://127.0.0.1:5000/`
+```
+JWT_SECRET // secret to encrypt tokens
+GFB_EDIT_SECRET // secret to allow edit access
+GFB_HOSTING_ENV // prod or something else
+MYSQL_TU_PASSWORD // MySQL DB trusted user password (if using mysql)
+```
 
-## Production server
+_Note that these can change to what ever values desired for deployment._
 
-Run `sudo ./run.sh` to run the flask application against port 80.
+### Node
+
+Have Node.js installed, then run `npm i` to install dependencies.
+
+## Run
+
+### Development
+
+Run `node backend/server.js` to run the server locally.
+
+### Production
+
+Run `pm2 start backend/server.js` to run the server in production.
