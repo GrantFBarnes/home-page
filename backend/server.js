@@ -16,17 +16,9 @@ const session = require("express-session");
 // Must be defined at the same level as home-page
 const repo_path = __dirname + "/../../";
 const potentialApps = {
-  catp: {
-    build_path: repo_path + "tractor-pulling/build",
-    backend_path: repo_path + "tractor-pulling/backend",
-    startup_calls: {
-      initData: require(repo_path + "tractor-pulling/backend/persist.js"),
-    },
-  },
   vietnamese: {
     build_path: repo_path + "learn-vietnamese/dist/learn-vietnamese",
     backend_path: repo_path + "learn-vietnamese/backend",
-    startup_calls: {},
   },
 };
 
@@ -143,13 +135,6 @@ function main() {
   } else {
     server.listen(8080);
     console.log("Running local environment on http://localhost:8080");
-  }
-
-  // Run any defined start up functions for SPAs
-  for (let a in apps) {
-    for (let s in apps[a].startup_calls) {
-      apps[a].startup_calls[s][s]();
-    }
   }
 }
 
