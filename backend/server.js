@@ -69,6 +69,7 @@ for (let a in apps) {
 app.use(parser.json({ limit: "50mb" }));
 app.use(cookieParser());
 
+app.use(require("./api"));
 for (let a in apps) {
   app.use(require(apps[a].backend_path + "/api"));
 }
