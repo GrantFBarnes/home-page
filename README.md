@@ -12,7 +12,7 @@ You will need to set the following environment variables
 JWT_SECRET // secret to encrypt tokens
 GFB_EDIT_SECRET // secret to allow edit access
 GFB_HOSTING_ENV // prod or something else
-MYSQL_TU_PASSWORD // MySQL DB trusted user password (if using mysql)
+SQL_TU_PASSWORD // MySQL/Maria DB trusted user password
 ```
 
 _Note that these can change to what ever values desired for deployment._
