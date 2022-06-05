@@ -1,6 +1,9 @@
 {
   "name": "home-page",
   "version": "1.0.0",
+  "scripts": {
+    "build": ""
+  },
   "private": true,
   "dependencies": {
     "body-parser": "^1.20.0",
