@@ -24,15 +24,16 @@ const potentialApps = {
     build_path: repo_path + "learn-vietnamese/dist/learn-vietnamese",
     backend_path: repo_path + "learn-vietnamese/backend",
   },
+  voc: {
+    build_path:
+      repo_path + "vehicle-ownership-cost/dist/vehicle-ownership-cost",
+  },
 };
 
 // Check to see which potential SPAs are available
 let apps = {};
 for (let a in potentialApps) {
-  if (
-    fs.existsSync(potentialApps[a].build_path) &&
-    fs.existsSync(potentialApps[a].backend_path)
-  ) {
+  if (fs.existsSync(potentialApps[a].build_path)) {
     apps[a] = potentialApps[a];
   }
 }
@@ -71,7 +72,9 @@ app.use(cookieParser());
 
 app.use(require("./api"));
 for (let a in apps) {
-  app.use(require(apps[a].backend_path + "/api"));
+  if (fs.existsSync(apps[a].backend_path)) {
+    app.use(require(apps[a].backend_path + "/api"));
+  }
 }
 
 for (let a in apps) {
