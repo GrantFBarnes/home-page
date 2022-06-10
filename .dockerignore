@@ -1,3 +1,7 @@
+# git
+.git
+.gitignore
+
 # dependencies
 /node_modules
 
