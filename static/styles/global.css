@@ -34,7 +34,8 @@ img {
 
 #nav-dropdown,
 .nav-link {
-  padding: 14px 16px;
+  height: 30px;
+  padding: 10px 16px;
 }
 
 #nav-dropdown:hover,
