@@ -13,22 +13,15 @@ function hasUserId(json) {
   return true;
 }
 
-function isAuthenticated(request, cookieName) {
-  const token = request.cookies[cookieName];
-  if (!token) return false;
-  let verify = false;
-  try {
-    verify = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {}
-  if (!verify) return false;
-  return true;
-}
-
 function getAuthentication(request, cookieName) {
-  if (isAuthenticated(request, cookieName)) {
-    return request.cookies[cookieName];
+  let value = null;
+  const token = request.cookies[cookieName];
+  if (token) {
+    try {
+      value = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (err) {}
   }
-  return null;
+  return value;
 }
 
 function setAuthentication(response, cookieName, cookieValue) {
@@ -46,7 +39,6 @@ function removeAuthentication(response, cookieName) {
 module.exports.hasManagerSecret = hasManagerSecret;
 module.exports.hasUserId = hasUserId;
 
-module.exports.isAuthenticated = isAuthenticated;
 module.exports.getAuthentication = getAuthentication;
 module.exports.setAuthentication = setAuthentication;
 module.exports.removeAuthentication = removeAuthentication;

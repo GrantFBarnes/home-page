@@ -28,10 +28,11 @@ router.get("/api/heartbeat", (request, response) => {
   returnSuccess(response, null);
 });
 
-// Check manager authentication
+// Get manager authentication
 router.get("/api/authentication/manager", (request, response) => {
-  if (authentication.isAuthenticated(request, managerCookieName)) {
-    returnSuccess(response, null);
+  const id = authentication.getAuthentication(request, managerCookieName);
+  if (id) {
+    returnSuccess(response, id);
   } else {
     rejectUnauthenticated(response, managerCookieName);
   }
@@ -47,11 +48,11 @@ router.post("/api/authentication/manager", (request, response) => {
   }
 });
 
-// Check user authentication
+// Get user authentication
 router.get("/api/authentication/user", (request, response) => {
-  const user_id = authentication.getAuthentication(request, userCookieName);
-  if (user_id) {
-    returnSuccess(response, user_id);
+  const id = authentication.getAuthentication(request, userCookieName);
+  if (id) {
+    returnSuccess(response, id);
   } else {
     rejectUnauthenticated(response, userCookieName);
   }
