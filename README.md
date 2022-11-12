@@ -2,6 +2,7 @@
 
 This is a Node.js server with no imported UI frameworks or css. It serves as the landing page for [grantfbarnes.net](http://grantfbarnes.net). It also serves as the backend for other personal Single Page Application (SPA) sites:
 
+- [CRM](https://github.com/GrantFBarnes/crm)
 - [Learn Vietnamese](https://github.com/GrantFBarnes/learn-vietnamese)
 - [Tractor Pulling](https://github.com/GrantFBarnes/tractor-pulling)
 - [Vehicle Ownership Cost](https://github.com/GrantFBarnes/vehicle-ownership-cost)
@@ -53,7 +54,7 @@ podman run --detach \
     -p 8080:8080 \
     --network host \
     -e GFB_HOSTING_ENV='GFB_HOSTING_ENV' \
-    -e GFB_EDIT_SECRET='GFB_EDIT_SECRET' \
+    -e GFB_MANAGER_SECRET='GFB_MANAGER_SECRET' \
     -e JWT_SECRET='JWT_SECRET' \
     -e SQL_TU_PASSWORD='SQL_TU_PASSWORD' \
     --name home-page \
@@ -84,7 +85,7 @@ You will need to set the following environment variables
 
 ```
 GFB_HOSTING_ENV // prod or something else
-GFB_EDIT_SECRET // secret to allow edit access
+GFB_MANAGER_SECRET // secret to allow manager access
 JWT_SECRET // secret to encrypt tokens
 SQL_TU_PASSWORD // MySQL/Maria DB trusted user password
 ```

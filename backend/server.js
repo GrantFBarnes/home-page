@@ -16,6 +16,10 @@ const session = require("express-session");
 // Must be defined at the same level as home-page
 const repo_path = __dirname + "/../../";
 const potentialApps = {
+  crm: {
+    build_path: repo_path + "crm/dist/crm",
+    backend_path: repo_path + "crm/backend",
+  },
   pulling: {
     build_path: repo_path + "tractor-pulling/dist/tractor-pulling",
     backend_path: repo_path + "tractor-pulling/backend",

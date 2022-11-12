@@ -5,6 +5,9 @@ WORKDIR /app
 RUN mkdir -p /app/home-page
 COPY home-page /app/home-page
 
+RUN mkdir -p /app/crm
+COPY crm /app/crm
+
 RUN mkdir -p /app/learn-vietnamese
 COPY learn-vietnamese /app/learn-vietnamese
 
@@ -17,6 +20,10 @@ COPY vehicle-ownership-cost /app/vehicle-ownership-cost
 # npm install and build on each project
 WORKDIR /app/home-page
 RUN npm install
+
+WORKDIR /app/crm
+RUN npm install
+RUN npm run build
 
 WORKDIR /app/learn-vietnamese
 RUN npm install

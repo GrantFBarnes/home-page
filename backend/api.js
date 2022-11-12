@@ -2,18 +2,21 @@ const express = require("express");
 
 const authentication = require("./authentication.js");
 
+const managerCookieName = "gfb_manager_token";
+const userCookieName = "gfb_user_token";
+
 const router = express.Router();
 
-function returnSuccess(response) {
+function returnSuccess(response, id) {
   response.writeHead(200, { "Content-Type": "application/json" });
-  response.write(JSON.stringify({ status: "ok" }));
+  response.write(JSON.stringify({ status: "ok", id: id }));
   response.end();
 }
 
-function rejectUnauthorized(response) {
-  authentication.removeTokenCookie(response);
+function rejectUnauthenticated(response, cookieName) {
+  authentication.removeAuthentication(response, cookieName);
   response.writeHead(401, { "Content-Type": "application/json" });
-  response.write(JSON.stringify({ status: "unauthorized" }));
+  response.write(JSON.stringify({ status: "not authenticated" }));
   response.end();
 }
 
@@ -22,25 +25,46 @@ function rejectUnauthorized(response) {
 
 // Heartbeat to make sure server is running
 router.get("/api/heartbeat", (request, response) => {
-  returnSuccess(response);
+  returnSuccess(response, null);
 });
 
-// Check if user is authenticated
-router.get("/api/authenticated", (request, response) => {
-  if (authentication.isAuthorized(request)) {
-    returnSuccess(response);
+// Check manager authentication
+router.get("/api/authentication/manager", (request, response) => {
+  if (authentication.isAuthenticated(request, managerCookieName)) {
+    returnSuccess(response, null);
   } else {
-    rejectUnauthorized(response);
+    rejectUnauthenticated(response, managerCookieName);
   }
 });
 
-// Get edit token if body is correct
-router.post("/api/token", (request, response) => {
-  if (authentication.requestToken(request.body)) {
-    authentication.setTokenCookie(response);
-    returnSuccess(response);
+// Set manager authentication
+router.post("/api/authentication/manager", (request, response) => {
+  if (authentication.hasManagerSecret(request.body)) {
+    authentication.setAuthentication(response, managerCookieName, "manager");
+    returnSuccess(response, null);
   } else {
-    rejectUnauthorized(response);
+    rejectUnauthenticated(response, managerCookieName);
+  }
+});
+
+// Check user authentication
+router.get("/api/authentication/user", (request, response) => {
+  const user_id = authentication.getAuthentication(request, userCookieName);
+  if (user_id) {
+    returnSuccess(response, user_id);
+  } else {
+    rejectUnauthenticated(response, userCookieName);
+  }
+});
+
+// Set user authentication
+router.post("/api/authentication/user", (request, response) => {
+  if (authentication.hasUserId(request.body)) {
+    const user_id = request.body.user_id;
+    authentication.setAuthentication(response, userCookieName, user_id);
+    returnSuccess(response, user_id);
+  } else {
+    rejectUnauthenticated(response, userCookieName);
   }
 });
 
