@@ -7,12 +7,6 @@ function hasManagerSecret(json) {
   return true;
 }
 
-function hasUserId(json) {
-  if (!json) return false;
-  if (!json.user_id) return false;
-  return true;
-}
-
 function getAuthentication(request, cookieName) {
   let value = null;
   const token = request.cookies[cookieName];
@@ -37,7 +31,6 @@ function removeAuthentication(response, cookieName) {
 }
 
 module.exports.hasManagerSecret = hasManagerSecret;
-module.exports.hasUserId = hasUserId;
 
 module.exports.getAuthentication = getAuthentication;
 module.exports.setAuthentication = setAuthentication;

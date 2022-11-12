@@ -58,17 +58,6 @@ router.get("/api/authentication/user", (request, response) => {
   }
 });
 
-// Set user authentication
-router.post("/api/authentication/user", (request, response) => {
-  if (authentication.hasUserId(request.body)) {
-    const user_id = request.body.user_id;
-    authentication.setAuthentication(response, userCookieName, user_id);
-    returnSuccess(response, user_id);
-  } else {
-    rejectUnauthenticated(response, userCookieName);
-  }
-});
-
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
