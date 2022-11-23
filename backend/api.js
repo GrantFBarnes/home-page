@@ -3,7 +3,6 @@ const express = require("express");
 const authentication = require("./authentication.js");
 
 const managerCookieName = "gfb_manager_token";
-const userCookieName = "gfb_user_token";
 
 const router = express.Router();
 
@@ -23,11 +22,6 @@ function rejectUnauthenticated(response, cookieName) {
 ////////////////////////////////////////////////////////////////////////////////
 // Define APIs
 
-// Heartbeat to make sure server is running
-router.get("/api/heartbeat", (request, response) => {
-  returnSuccess(response, null);
-});
-
 // Get manager authentication
 router.get("/api/authentication/manager", (request, response) => {
   const id = authentication.getAuthentication(request, managerCookieName);
@@ -45,16 +39,6 @@ router.post("/api/authentication/manager", (request, response) => {
     returnSuccess(response, null);
   } else {
     rejectUnauthenticated(response, managerCookieName);
-  }
-});
-
-// Get user authentication
-router.get("/api/authentication/user", (request, response) => {
-  const id = authentication.getAuthentication(request, userCookieName);
-  if (id) {
-    returnSuccess(response, id);
-  } else {
-    rejectUnauthenticated(response, userCookieName);
   }
 });
 
