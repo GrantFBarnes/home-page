@@ -12,14 +12,14 @@ function getAuthentication(request, cookieName) {
   const token = request.cookies[cookieName];
   if (token) {
     try {
-      value = jwt.verify(token, process.env.JWT_SECRET);
+      value = jwt.verify(token, process.env.GFB_JWT_SECRET);
     } catch (err) {}
   }
   return value;
 }
 
 function setAuthentication(response, cookieName, cookieValue) {
-  const token = jwt.sign(cookieValue, process.env.JWT_SECRET);
+  const token = jwt.sign(cookieValue, process.env.GFB_JWT_SECRET);
   response.cookie(cookieName, token, {
     maxAge: 86400000, // 24 hours = 86400000 ms
     httpOnly: true,
